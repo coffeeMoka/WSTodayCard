@@ -80,15 +80,15 @@ function getProducts() {
   const url = 'https://ws-tcg.com/todays-card/';
   const html = getHtml(url);
   const result = getMatchList(html, /.*?\/">.*?(<br \/>|<\/a><\/h3>)/g);
-  const text = "今日の更新タイトル\n";
+  var text = "今日の更新タイトル\n";
   var value = [];
   for(var i = 0; i < result.length; i++) {
-    const r = result[i];
-    const searchTag = getMatchList(r, /.*?\/">/g)[0];
-    const fIndex = r.indexOf(searchTag);
-    const spResult = r.substring(fIndex + searchTag.length);
-    const endTag = getMatchList(spResult, /(<br \/>)|(<\/a><\/h3>)/g)[0];
-    const sIndex = spResult.indexOf(endTag);
+    var r = result[i];
+    var searchTag = getMatchList(r, /.*?\/">/g)[0];
+    var fIndex = r.indexOf(searchTag);
+    var spResult = r.substring(fIndex + searchTag.length);
+    var endTag = getMatchList(spResult, /(<br \/>)|(<\/a><\/h3>)/g)[0];
+    var sIndex = spResult.indexOf(endTag);
     value[i] = spResult.substring(0, sIndex);
   }
   for(var i = 0; i < value.length; i++) {
